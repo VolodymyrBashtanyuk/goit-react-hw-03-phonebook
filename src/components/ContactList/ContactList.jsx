@@ -19,9 +19,9 @@ export const ContactList = ({ items, onRemove }) => {
 ContactList.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.exact({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      number: PropTypes.number.isRequired,
+      number: PropTypes.string.isRequired,
     })
   ),
   onRemove: PropTypes.func.isRequired,

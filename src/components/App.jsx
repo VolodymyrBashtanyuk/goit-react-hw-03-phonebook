@@ -11,6 +11,21 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parceContacts = JSON.parse(contacts);
+    if (parceContacts) {
+      this.setState({ contacts: parceContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+    if (contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+  }
+
   isDublicate = ({ name }) => {
     const { contacts } = this.state;
     const result = contacts.find(item => item.name === name);
